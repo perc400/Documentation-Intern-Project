@@ -39,3 +39,8 @@
 - Мониторинг: Prometheus, Grafana, Loki;
 - Системы управления конфигурациями: Ansible;
 - Прочие сервисы: PostgreSQL, RabbitMQ, Nginx.
+
+### Репозитории
+- https://github.com/perc400/registration-publisher-service-web
+- https://github.com/perc400/consumer-service-console
+- https://github.com/perc400/ansible
