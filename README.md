@@ -37,4 +37,5 @@
 - Контейнеризация: Docker, Docker-compose;
 - CI/CD: GitLab;
 - Мониторинг: Prometheus, Grafana, Loki;
+- Системы управления конфигурациями: Ansible;
 - Прочие сервисы: PostgreSQL, RabbitMQ, Nginx.
