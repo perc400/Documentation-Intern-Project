@@ -10,24 +10,64 @@
 ## Сервисы
   1. docker.service
   - Информация
+  ```
+  Листинг
+  ```
   2. node_exporter.service
   - Информация
+  ```
+  Листинг
+  ```
 
 ## Контейнеры
   1. GitLab CE
   - Информация
+  ```
+  Листинг
+  ```
   - Конфигурация [gitlab.rb]
+  ```
+  Листинг
+  ```
   2. Docker Registry
   - Информация
+  ```
+  Листинг
+  ```
   3. Cadvisor
   - Информация
+  ```
+  Листинг
+  ```
 
 ## docker-compose.yml
   - Описание
-  - Листинг
+  ```
+  Листинг
+  ```
 
 ## GitLab
   - Репозитории
     1. registration-publisher-service
        - Dockerfile
-       - p
+       ```
+       Листинг
+       ```
+       - .gitlab-ci.yml
+       ```
+       Листинг
+       ```
+    2. consumer-service
+       - Dockerfile
+       ```
+       Листинг
+       ```
+       - .gitlab-ci.yml
+       ```
+       Листинг
+       ```
+  - GitLab Runner
+    1. Информация
+
+### firewalld
+  - Информация
