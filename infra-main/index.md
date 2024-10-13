@@ -69,5 +69,22 @@
   - GitLab Runner
     1. Информация
 
+## Ansible
+  - Inventory-файл
+  - Роли
+  - Playbooks
+    1. tt.yml
+       ```
+       Листинг
+       ```
+    2. bb.yml
+       ```
+       Листинг
+       ```
+    3. rr.yml
+       ```
+       Листинг
+       ```
+
 ## firewalld
   - Информация
