@@ -1,13 +1,13 @@
 # [infra-main]
 
 ## Навигация
-1. [Общая информация]
-2. [Сервисы]
-3. [Контейнеры]
-4. [docker-compose.yml]
-5. [GitLab]
-6. [Ansible]
-7. [firewalld]
+1. Общая информация
+2. Сервисы
+3. Контейнеры
+4. docker-compose.yml
+5. GitLab
+6. Ansible
+7. firewalld
 
 ## Общая информация
  - Имя хоста: infra-main 
