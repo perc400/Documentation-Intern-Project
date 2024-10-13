@@ -1,12 +1,23 @@
-# monitoring-server
+# [monitoring-server]
 
 ## Общая информация
-	- IP: 192.168.140.138
+ - Имя хоста: monitoring-server
+ - Операционная система: -
+ - Ядро: -
+ - Архитектура: x86-64
+ - IP-адрес: 192.168.140.138
 
 ## Сервисы
-	### docker
-		"текст"
-		- info
-	### node_exporter
-		"текст"
-		- info
+  1. docker.service
+  - Информация
+    ```
+    Листинг
+    ```
+  2. node_exporter.service
+  - Информация
+    ```
+    Листинг
+    ```
+
+## ufw
+  - Информация
