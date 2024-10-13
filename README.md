@@ -33,6 +33,7 @@
    - Конфигурация Prometheus и Grafana для мониторинга серверов и сервисов, Loki для сбора логов. Конфигурация алертинга через Telegram.
 
 ### Использованные технологии
+- Гипервизоры: VMware Workstation;
 - ОС: Rocky Linux 8, Ubuntu Server 22.04;
 - Контейнеризация: Docker, Docker-compose;
 - CI/CD: GitLab;
