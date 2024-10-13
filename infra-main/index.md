@@ -20,7 +20,7 @@
   1. docker.service
   2. node_exporter.service
   - Информация [/etc/systemd/system/node_exporter.service]
-    ```
+    ```service
     [Unit]
     Description=Node Exporter Service
     After=network.target
@@ -37,7 +37,7 @@
     WantedBy=multi-user.target
     ```
   - Установка [/root/node_exporter/install-script.sh]
-    ```
+    ```bash
     #!/bin/bash
 
     set -e
@@ -105,7 +105,7 @@
     | 1ba7a8c36667 | gitlab/gitlab-ce:17.1.7-ce.0 | "/assets/wrapper" | 0.0.0.0:22->22/tcp, :::22->22/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp, 0.0.0.0:8080->80/tcp, [::]:8080->80/tcp | gitlab |
     
   - Конфигурация [/srv/gitlab/config/gitlab.rb] — пропущены закомментированные строки
-    ```
+    ```pp
     external_url 'http://192.168.140.139:8888'
     nginx['listen_port'] = 80
     nginx['listen_https'] = false
@@ -133,7 +133,7 @@
 
 ## docker-compose.yml
   - Описание
-    ```
+    ```yaml
     services:
     gitlab:
       image: gitlab/gitlab-ce:17.1.7-ce.0
