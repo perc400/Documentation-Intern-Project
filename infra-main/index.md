@@ -1,13 +1,13 @@
 # [infra-main]
 
 ## Навигация
-1. [Общая информация](index.md#общаяинформация)
-2. [Сервисы](index.md#сервисы)
-3. [Контейнеры](index.md#контейнеры)
-4. [docker-compose.yml](index.md#docker-compose.yml)
-5. [GitLab](index.md#GitLab)
-6. [Ansible](index.md#Ansible)
-7. [firewalld](index.md#firewalld)
+1. [Общая информация](/index.md#общаяинформация)
+2. [Сервисы](/index.md#сервисы)
+3. [Контейнеры](/index.md#контейнеры)
+4. [docker-compose.yml](/index.md#docker-compose.yml)
+5. [GitLab](/index.md#GitLab)
+6. [Ansible](/index.md#Ansible)
+7. [firewalld](/index.md#firewalld)
 
 ## Общая информация
  - Имя хоста: infra-main 
