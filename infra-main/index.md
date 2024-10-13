@@ -1,5 +1,14 @@
 # [infra-main]
 
+## Навигация
+[Общая информация](## Общая информация)
+[Сервисы](## Сервисы)
+[Контейнеры](## Контейнеры)
+[docker-compose.yml](## docker-compose.yml)
+[GitLab](## GitLab)
+[Ansible](## Ansible)
+[firewalld](## firewalld)
+
 ## Общая информация
  - Имя хоста: infra-main 
  - Операционная система: Rocky Linux 8.10 (Green Obsidian)
