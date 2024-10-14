@@ -44,7 +44,7 @@
     | ------------ | ----- | ------- | ----- | ----- |
     | e88537f16f42 | gitlab/gitlab-runner:latest | "/usr/bin/dumb-init …" | - | gitlab-runner |
   
-  - Конфигурация [/srv/gitlab-runner/config/cinfig.toml]
+  - Конфигурация [/srv/gitlab-runner/config/config.toml]
     ```toml
     concurrent = 1
     check_interval = 0
