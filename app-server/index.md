@@ -57,7 +57,7 @@
       name = "Runner for publisher and consumer applications"
       url = "http://192.168.140.136:8080"
       id = 34
-      token = "-"
+      token = "glrt-w-KccwyD9d8eWwYFp8AB"
       executor = "docker"
       clone_url = "http://192.168.140.136:8080"
       [runners.custom_build_dir]
@@ -75,6 +75,7 @@
         disable_cache = false
         volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]
         shm_size = 0
+        network_mode = "apps_network"
     ```
 
   3. rabbitmq:3.13.7-management
@@ -95,78 +96,86 @@
   - Описание
     ```yaml
     services:
-    consumer_service:
-      image: '192.168.140.136:5000/consumer_service:latest'
-      container_name: consumer_service
-      depends_on:
-        - rabbitmq
-      restart: always
-      environment:
-        - RABBITMQ_HOST=rabbitmq
-  
-    publisher_service:
-      image: '192.168.140.136:5000/publisher_service:latest'
-      container_name: publisher_service
-      depends_on:
-        - rabbitmq
-        - postgresql
-      restart: always
-      ports:
-        - '7070:8080'
-      environment:
-        - POSTGRES_CONNECTION=Host=postgresql;Port=5432;Database=usersdb;Username=api;Password=api;Pooling=true;
-        - RABBITMQ_HOST=rabbitmq
-  
-    rabbitmq:
-      image: 'rabbitmq:3.13.7-management'
-      container_name: rabbitmq
-      restart: always
-      ports:
-        - '5672:5672'
-        - '15672:15672'
-      volumes:
-        - /rabbitmq/data/:/var/lib/rabbitmq
-        - /rabbitmq/log/:/var/log/rabbitmq
-  
-    postgresql:
-      image: 'postgres:15.8'
-      container_name: postgresql
-      restart: always
-      ports:
-        - '5432:5432'
-      volumes:
-        - /postgres/data/:/var/lib/postgresql/data
-        - /postgres/log/:/var/log/postgresql
-      environment:
-        POSTGRES_USER: api
-        POSTGRES_PASSWORD: api
-        POSTGRES_DB: usersdb
-  
-    gitlab-runner:
-      image: 'gitlab/gitlab-runner:latest'
-      container_name: gitlab-runner
-      restart: always
-      volumes:
-        - /srv/gitlab-runner/config:/etc/gitlab-runner
-        - /var/run/docker.sock:/var/run/docker.sock
-      environment:
-        - CI_SERVER_URL=http://192.168.140.136:8080
-        - REGISTRATION_TOKEN=-
-        - RUNNER_EXECUTOR=docker
-  
-    cadvisor:
-      image: google/cadvisor:latest
-      container_name: cadvisor
-      privileged: true
-      restart: always
-      ports:
-        - '9090:8080'
-      volumes:
-        - /:/rootfs:ro
-        - /var/run:/var/run:rw
-        - /sys:/sys:ro
-        - /var/lib/docker/:/var/lib/docker:ro
-        - /dev/disk/:/dev/disk:ro
+      consumer_service:
+        image: '192.168.140.136:5000/consumer_service:latest'
+        container_name: consumer_service
+        depends_on:
+          - rabbitmq
+        restart: always
+        environment:
+          - RABBITMQ_HOST=rabbitmq
+    
+      publisher_service:
+        image: '192.168.140.136:5000/publisher_service:latest'
+        container_name: publisher_service
+        depends_on:
+          - rabbitmq
+          - postgresql
+        restart: always
+        ports:
+          - '7070:8080'
+        environment:
+          - POSTGRES_CONNECTION=Host=postgresql;Port=5432;Database=usersdb;Username=api;Password=api;Pooling=true;
+          - RABBITMQ_HOST=rabbitmq
+    
+      rabbitmq:
+        image: 'rabbitmq:3.13.7-management'
+        container_name: rabbitmq
+        restart: always
+        ports:
+          - '5672:5672'
+          - '15672:15672'
+        volumes:
+          - /rabbitmq/data/:/var/lib/rabbitmq
+          - /rabbitmq/log/:/var/log/rabbitmq
+        networks:
+          - apps_network
+    
+      postgresql:
+        image: 'postgres:15.8'
+        container_name: postgresql
+        restart: always
+        ports:
+          - '5432:5432'
+        volumes:
+          - /postgres/data/:/var/lib/postgresql/data
+          - /postgres/log/:/var/log/postgresql
+        environment:
+          POSTGRES_USER: api
+          POSTGRES_PASSWORD: api
+          POSTGRES_DB: usersdb
+        networks:
+          - apps_network
+    
+      gitlab-runner:
+        image: 'gitlab/gitlab-runner:latest'
+        container_name: gitlab-runner
+        restart: always
+        volumes:
+          - /srv/gitlab-runner/config:/etc/gitlab-runner
+          - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+          - CI_SERVER_URL=http://192.168.140.136:8080
+          - REGISTRATION_TOKEN=GR1348941AAioZ1-KJve_K77cRtLS
+          - RUNNER_EXECUTOR=docker
+    
+      cadvisor:
+        image: google/cadvisor:latest
+        container_name: cadvisor
+        privileged: true
+        restart: always
+        ports:
+          - '9090:8080'
+        volumes:
+          - /:/rootfs:ro
+          - /var/run:/var/run:rw
+          - /sys:/sys:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+          - /dev/disk/:/dev/disk:ro
+    
+    networks:
+      apps_network:
+        external: true
     ```
 
 ### Скрипт с POST-запросом к publisher_service
