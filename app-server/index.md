@@ -182,8 +182,8 @@
 ```csharp
 using System.Net.Http.Json;
 
-Console.WriteLine("\nTarget URL: ");
-string? targetUrl = Console.ReadLine();
+string? targetUrl = args[0];
+Console.WriteLine($"Target URL: {targetUrl}");
 
 using var client = new HttpClient();
 
@@ -201,7 +201,7 @@ for (int i = 0; i < requestsCount; i++)
         passwordChars[j] = chars[random.Next(chars.Length)];
     }
 
-    var userCredentials = new
+    var userCredentials = new 
     {
         name = new string(nameChars),
         password = new string(passwordChars)
@@ -209,6 +209,23 @@ for (int i = 0; i < requestsCount; i++)
 
     var jsonContent = JsonContent.Create(userCredentials);
 
-    await client.PostAsync(targetUrl, jsonContent);
+    //await client.PostAsync(targetUrl, jsonContent);
+    
+    try
+    {
+        var response = await client.PostAsync(targetUrl, jsonContent);
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine($"Request {i+1} succeeded.");
+        }
+        else
+        {
+            Console.WriteLine($"Request {i+1} failed with status code: {response.StatusCode}");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Request {i+1} failed with exception: {ex.Message}");
+    }
 }
 ```
